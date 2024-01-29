@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        #bg {
+            background-color:#e6e9ea;
+
+        }
+        #outer-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #e4f0e8;
+            border-radius: 2%;
+        }
+        #inner-box {
+            border: 1px solid #ccc;
+            margin-top: 10px;
+            padding: 10px;
+            background-color:#ffffff;
+            border-radius: 2%;
+            font-size: 24px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        } 
+    </style>
+</head>
+<body id ="bg">
+  
+    <div id="outer-box">
+        <h2>Write your HTML code below:</h2>
+        <textarea id="code-input" rows="50" cols="250" style="border-color: rgb(1, 38, 58) ;">
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <title>Temperature Converter</title>
+              <style>
+                body {
+                  font-family: Arial, sans-serif;
+                  background-color: #f0f0f0;
+                  text-align: center;
+                  margin: 0;
+                  padding: 0;
+                }
+            
+                h1 {
+                  color: #333;
+                }
+            
+                .container {
+                  max-width: 400px;
+                  margin: 0 auto;
+                  background-color: #fff;
+                  border: 1px solid #ccc;
+                  border-radius: 5px;
+                  padding: 20px;
+                  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+                }
+            
+                label {
+                  display: block;
+                  margin-bottom: 10px;
+                  font-weight: bold;
+                }
+            
+                input[type="number"] {
+                  width: 100%;
+                  padding: 10px;
+                  margin-bottom: 20px;
+                }
+            
+                button {
+                  background-color: #3498db;
+                  color: #fff;
+                  border: none;
+                  padding: 10px 20px;
+                  cursor: pointer;
+                }
+            
+                #results {
+                  margin-top: 20px;
+                }
+              </style>
+            </head>
+            <body>
+              <h1>Temperature Converter</h1>
+              <div class="container">
+                <label for="celsius">Enter Temperature in Celsius:</label>
+                <input type="number" id="celsius" placeholder="Enter temperature">
+                <button onclick="convertTemperature()">Convert</button>
+                <div id="results"></div>
+              </div>
+            
+              <script>
+                function convertTemperature() {
+                  const celsiusInput = document.getElementById("celsius");
+                  const celsius = parseFloat(celsiusInput.value);
+            
+                  if (!isNaN(celsius)) {
+                    const fahrenheit = (celsius * 9/5) + 32;
+                    const kelvin = celsius + 273.15;
+                    const rankine = (celsius + 273.15) * 9/5;
+            
+                    const resultsDiv = document.getElementById("results");
+                    resultsDiv.innerHTML = `
+                      <p>${celsius} &deg;C is equivalent to:</p>
+                      <p>${fahrenheit.toFixed(2)} &deg;F</p>
+                      <p>${kelvin.toFixed(2)} K</p>
+                      <p>${rankine.toFixed(2)} &deg;Ra</p>
+                    `;
+                  }
+                }
+              </script>
+            </body>
+            </html>
+            
+</textarea>
+        <br>
+        <button id="execute-button">Execute Code</button>
+    </div>
+    <div id="inner-box">
+        <h2>Output:</h2>
+        <iframe id="output-frame" width="100%" height="500" ></iframe>
+    </div>
+
+    <script>
+    
+        var urlParams = new URLSearchParams(window.location.search);
+        var code = urlParams.get('code');
+        
+        if (code) {
+            document.getElementById('code-output').value = decodeURIComponent(code);
+        }
+  
+        document.getElementById('execute-button').addEventListener('click', function() {
+            var code = document.getElementById('code-input').value;
+            var outputFrame = document.getElementById('output-frame');
+            var frameDocument = outputFrame.contentDocument || outputFrame.contentWindow.document;
+            frameDocument.open();
+            frameDocument.write(code);
+            frameDocument.close();
+        });
+    </script>
+</body>
+</html>

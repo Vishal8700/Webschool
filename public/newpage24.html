@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        #bg {
+            background-color:#e6e9ea;
+
+        }
+        
+        #outer-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #e4f0e8;
+            border-radius: 2%;
+          
+            
+        }
+
+
+        #inner-box {
+            border: 1px solid #ccc;
+            margin-top: 10px;
+            padding: 10px;
+            background-color:#ffffff;
+            border-radius: 2%;
+            font-size: 24px;
+
+
+        }
+      
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        
+    </style>
+</head>
+<body id ="bg">
+  
+    <div id="outer-box">
+        <h2>Write your HTML code below:</h2>
+        <textarea id="code-input" rows="50" cols="250" style="border-color: rgb(1, 38, 58) ;">
+          <!DOCTYPE html>
+          <html>
+          <style>
+            table, th, td {
+              border: 2px solid black;
+              border-collapse: collapse;
+            }
+          
+            th, td {
+              padding: 5px;
+            }
+          </style>
+          <body>
+          
+            
+          
+          <button type="button" onclick="loadXMLDoc()">Get DATABASE</button>
+          <br><br>
+          <table id="demo"></table>
+          
+          <div id="showCD"></div>
+          
+          
+          
+          <script>
+            function loadXMLDoc() {
+              var xmlhttp = new XMLHttpRequest();
+              xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                  myFunction(this);
+                }
+              };
+              xmlhttp.open("GET", "assets\\xml\\database2.xml", true);
+              xmlhttp.send();
+            }
+          
+            function myFunction(xml) {
+              var i;
+              var xmlDoc = xml.responseXML;
+              var table = "<tr><th>NAME</th><th>DESCRIPTION</th></tr>";
+              var x = xmlDoc.getElementsByTagName("CD");
+              for (i = 0; i < x.length; i++) {
+                table += "<tr><td>" +
+                  x[i].getElementsByTagName("NAME")[0].textContent +
+                  "</td><td>" +
+                  x[i].getElementsByTagName("DESCRIPTION")[0].textContent +
+                  "</td></tr>";
+              }
+              document.getElementById("demo").innerHTML = table;
+            }
+          
+          </script>
+          
+          </body>
+          </html>
+
+</textarea>
+        <br>
+        <button id="execute-button" >Execute Code</button>
+    </div>
+    <div id="inner-box">
+        <h2>Output:</h2>
+        <iframe id="output-frame" width="100%" height="300" ></iframe>
+    </div>
+
+    <script>
+    
+        var urlParams = new URLSearchParams(window.location.search);
+        var code = urlParams.get('code');
+        
+        if (code) {
+            document.getElementById('code-output').value = decodeURIComponent(code);
+        }
+  
+        document.getElementById('execute-button').addEventListener('click', function() {
+            var code = document.getElementById('code-input').value;
+            var outputFrame = document.getElementById('output-frame');
+            var frameDocument = outputFrame.contentDocument || outputFrame.contentWindow.document;
+            frameDocument.open();
+            frameDocument.write(code);
+            frameDocument.close();
+        });
+    </script>
+</body>
+</html>

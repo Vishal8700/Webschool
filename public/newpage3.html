@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        #bg {
+            background-color:#e6e9ea;
+
+        }
+        #outer-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #e4f0e8;
+            border-radius: 2%;
+        }
+        #inner-box {
+            border: 1px solid #ccc;
+            margin-top: 10px;
+            padding: 10px;
+            background-color:#ffffff;
+            border-radius: 2%;
+            font-size: 24px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        } 
+    </style>
+</head>
+<body id ="bg">
+  
+    <div id="outer-box">
+        <h2>Write your HTML code below:</h2>
+        <textarea id="code-input" rows="50" cols="250" style="border-color: rgb(1, 38, 58) ;">
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                    }
+            
+                    table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        border: 2px solid #333;
+                    }
+            
+                    th, td {
+                        padding: 10px;
+                        border: 1px solid #ccc;
+                        text-align: center;
+                    }
+            
+                    /* Apply styles to the nth row (in this case, the 3rd row) */
+                    tr:nth-child(3) {
+                        background-color: #007BFF;
+                        color: white;
+                    }
+            
+                    /* Apply styles to the nth column (in this case, the 2nd column) */
+                    td:nth-child(2) {
+                        background-color: #ff6600;
+                        color: white;
+                    }
+            
+                    th {
+                        background-color: #333;
+                        color: white;
+                    }
+                </style>
+            </head>
+            <body>
+                <h1>HTML Table with nth-row and nth-column styling</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Header 1</th>
+                            <th>Header 2</th>
+                            <th>Header 3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Row 1, Column 1</td>
+                            <td>Row 1, Column 2</td>
+                            <td>Row 1, Column 3</td>
+                        </tr>
+                        <tr>
+                            <td>Row 2, Column 1</td>
+                            <td>Row 2, Column 2</td>
+                            <td>Row 2, Column 3</td>
+                        </tr>
+                        <tr>
+                            <td>Row 3, Column 1</td>
+                            <td>Row 3, Column 2</td>
+                            <td>Row 3, Column 3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </body>
+            </html>
+            
+</textarea>
+        <br>
+        <button id="execute-button">Execute Code</button>
+    </div>
+    <div id="inner-box">
+        <h2>Output:</h2>
+        <iframe id="output-frame" width="100%" height="300" ></iframe>
+    </div>
+
+    <script>
+    
+        var urlParams = new URLSearchParams(window.location.search);
+        var code = urlParams.get('code');
+        
+        if (code) {
+            document.getElementById('code-output').value = decodeURIComponent(code);
+        }
+  
+        document.getElementById('execute-button').addEventListener('click', function() {
+            var code = document.getElementById('code-input').value;
+            var outputFrame = document.getElementById('output-frame');
+            var frameDocument = outputFrame.contentDocument || outputFrame.contentWindow.document;
+            frameDocument.open();
+            frameDocument.write(code);
+            frameDocument.close();
+        });
+    </script>
+</body>
+</html>

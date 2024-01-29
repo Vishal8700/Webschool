@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        #bg {
+            background-color:#e6e9ea;
+
+        }
+        #outer-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #e4f0e8;
+            border-radius: 2%;
+        }
+        #inner-box {
+            border: 1px solid #ccc;
+            margin-top: 10px;
+            padding: 10px;
+            background-color:#ffffff;
+            border-radius: 2%;
+            font-size: 24px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }  
+    </style>
+</head>
+<body id ="bg">
+  
+    <div id="outer-box">
+        <h2>Write your HTML code below:</h2>
+        <textarea id="code-input" rows="50" cols="250" style="border-color: rgb(1, 38, 58) ;">
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <title>XML Table with XSL Styling</title>
+              <script>
+                function loadXMLDoc(filename) {
+                  if (window.ActiveXObject) {
+                    xhttp = new ActiveXObject("Msxml2.XMLHTTP");
+                  } else {
+                    xhttp = new XMLHttpRequest();
+                  }
+                  xhttp.open("GET", filename, false);
+                  xhttp.send("");
+                  return xhttp.responseXML;
+                }
+            
+                function displayResult() {
+                  xml = loadXMLDoc("assets\\xml\\table.xml");
+                  xsl = loadXMLDoc("assets\\xml\\table.xsl");
+                  if (window.ActiveXObject || xhttp.responseType == "msxml-document") {
+                    ex = xml.transformNode(xsl);
+                    document.getElementById("example").innerHTML = ex;
+                  } else if (document.implementation && document.implementation.createDocument) {
+                    xsltProcessor = new XSLTProcessor();
+                    xsltProcessor.importStylesheet(xsl);
+                    resultDocument = xsltProcessor.transformToFragment(xml, document);
+                    document.getElementById("example").appendChild(resultDocument);
+                  }
+                }
+              </script>
+            </head>
+            <body onload="displayResult()">
+              <h1>XML Table with XSL Styling</h1>
+              <div id="example"></div>
+            </body>
+            </html>
+            
+</textarea>
+        <br>
+        <button id="execute-button">Execute Code</button>
+    </div>
+    <div id="inner-box">
+        <h2>Output:</h2>
+        <iframe id="output-frame" width="100%" height="300" ></iframe>
+    </div>
+
+    <script>
+    
+        var urlParams = new URLSearchParams(window.location.search);
+        var code = urlParams.get('code');
+        
+        if (code) {
+            document.getElementById('code-output').value = decodeURIComponent(code);
+        }
+  
+        document.getElementById('execute-button').addEventListener('click', function() {
+            var code = document.getElementById('code-input').value;
+            var outputFrame = document.getElementById('output-frame');
+            var frameDocument = outputFrame.contentDocument || outputFrame.contentWindow.document;
+            frameDocument.open();
+            frameDocument.write(code);
+            frameDocument.close();
+        });
+    </script>
+</body>
+</html>

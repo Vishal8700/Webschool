@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        #bg {
+            background-color:#e6e9ea;
+
+        }
+        
+        #outer-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #e4f0e8;
+            border-radius: 2%;
+          
+            
+        }
+
+
+        #inner-box {
+            border: 1px solid #ccc;
+            margin-top: 10px;
+            padding: 10px;
+            background-color:#ffffff;
+            border-radius: 2%;
+            font-size: 24px;
+
+
+        }
+      
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        
+    </style>
+</head>
+<body id ="bg">
+  
+    <div id="outer-box">
+        <h2>Write your HTML code below:</h2>
+        <textarea id="code-input" rows="50" cols="250" style="border-color: rgb(1, 38, 58) ;">
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <style>
+                    body {
+                        background-color: #f0f0f0;
+                        font-family: Arial, sans-serif;
+                    }
+            
+                    h1 {
+                        background-color: #007BFF;
+                        color: white;
+                        padding: 10px;
+                        text-align: center;
+                    }
+            
+                    h2 {
+                        background-color: #00a300;
+                        color: white;
+                        padding: 8px;
+                    }
+            
+                    h3 {
+                        background-color: #ff6600;
+                        color: white;
+                        padding: 6px;
+                    }
+            
+                    h4 {
+                        background-color: #944dff;
+                        color: white;
+                        padding: 4px;
+                    }
+            
+                    h5 {
+                        background-color: #ff0055;
+                        color: white;
+                        padding: 3px;
+                    }
+            
+                    h6 {
+                        background-color: #9900cc;
+                        color: white;
+                        padding: 2px;
+                    }
+            
+                    p {
+                        background-color: #e6e6e6;
+                        padding: 10px;
+                        border: 1px solid #ccc;
+                    }
+                </style>
+            </head>
+            <body>
+                <h1>Header 1</h1>
+                <h2>Header 2</h2>
+                <h3>Header 3</h3>
+                <h4>Header 4</h4>
+                <h5>Header 5</h5>
+                <h6>Header 6</h6>
+            
+                <img src="assets\images\newsletter-4.webp" alt="Sample Image" style="width: 300px; height: 200px; display: block; margin: 10px auto;">
+            
+                <p>This is a sample paragraph with various styles. It has a background color, padding, and a border.</p>
+            </body>
+            </html>
+                       
+</textarea>
+        <br>
+        <button id="execute-button">Execute Code</button>
+    </div>
+    <div id="inner-box">
+        <h2>Output:</h2>
+        <iframe id="output-frame" width="100%" height="800" ></iframe>
+    </div>
+
+    <script>
+    
+        var urlParams = new URLSearchParams(window.location.search);
+        var code = urlParams.get('code');
+        
+        if (code) {
+            document.getElementById('code-output').value = decodeURIComponent(code);
+        }
+  
+        document.getElementById('execute-button').addEventListener('click', function() {
+            var code = document.getElementById('code-input').value;
+            var outputFrame = document.getElementById('output-frame');
+            var frameDocument = outputFrame.contentDocument || outputFrame.contentWindow.document;
+            frameDocument.open();
+            frameDocument.write(code);
+            frameDocument.close();
+        });
+    </script>
+</body>
+</html>
