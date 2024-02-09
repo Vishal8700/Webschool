@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        #bg {
+            background-color:#e6e9ea;
+
+        }
+        #outer-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #e4f0e8;
+            border-radius: 2%;
+        }
+        #inner-box {
+            border: 1px solid #ccc;
+            margin-top: 10px;
+            padding: 10px;
+            background-color:#ffffff;
+            border-radius: 2%;
+            font-size: 24px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }   
+    </style>
+</head>
+<body id ="bg">
+  
+    <div id="outer-box">
+        <h2>Write your HTML code below:</h2>
+        <textarea id="code-input" rows="50" cols="250" style="border-color: rgb(1, 38, 58) ;">
+            <!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sample Form</h1>
+    <form action="#" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select><br>
+
+        <label for="upload">File Upload:</label><br>
+        <input type="file" id="upload" name="upload"><br><br>
+        <br>
+        <label for="checkbox">Agree to our terms and conditions </label>
+        <input type="checkbox" id="checkbox" name="checkbox" value="agree"><br>
+
+        <label for="radio1">Option 1:opt to free </label>
+        <input type="radio" id="radio1" name="radio" value="option1"><br>
+
+        <label for="radio2">Option 2:opt to paid subscription</label>
+        <input type="radio" id="radio2" name="radio" value="option2"><br>
+        <br>
+        <button type="submit" style="border-radius: 5% ;">Submit</button>
+    </form>
+</body>
+</html>
+
+</textarea>
+        <br>
+        <button id="execute-button">Execute Code</button>
+    </div>
+    <div id="inner-box">
+        <h2>Output:</h2>
+        <iframe id="output-frame" width="100%" height="800" ></iframe>
+    </div>
+
+    <script>
+    
+        var urlParams = new URLSearchParams(window.location.search);
+        var code = urlParams.get('code');
+        
+        if (code) {
+            document.getElementById('code-output').value = decodeURIComponent(code);
+        }
+  
+        document.getElementById('execute-button').addEventListener('click', function() {
+            var code = document.getElementById('code-input').value;
+            var outputFrame = document.getElementById('output-frame');
+            var frameDocument = outputFrame.contentDocument || outputFrame.contentWindow.document;
+            frameDocument.open();
+            frameDocument.write(code);
+            frameDocument.close();
+        });
+    </script>
+</body>
+</html>

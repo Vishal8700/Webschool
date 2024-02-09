@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        #bg {
+            background-color:#e6e9ea;
+
+        }
+        #outer-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #e4f0e8;
+            border-radius: 2%;
+        }
+        #inner-box {
+            border: 1px solid #ccc;
+            margin-top: 10px;
+            padding: 10px;
+            background-color:#ffffff;
+            border-radius: 2%;
+            font-size: 24px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        } 
+    </style>
+</head>
+<body id ="bg">
+  
+    <div id="outer-box">
+        <h2>Write your HTML code below:</h2>
+        <textarea id="code-input" rows="50" cols="250" style="border-color: rgb(1, 38, 58) ;">
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        background-color: #f0f0f0;
+                    }
+            
+                    #content {
+                        background-color: #fff;
+                        padding: 20px;
+                        border: 1px solid #ccc;
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                        margin: 20px auto;
+                        max-width: 800px;
+                    }
+            
+                    iframe {
+                        width: 100%;
+                        height: 400px;
+                    }
+            
+                    img {
+                        display: block;
+                        margin: 20px auto;
+                        max-width: 100%;
+                    }
+            
+                    video {
+                        display: block;
+                        margin: 20px auto;
+                        max-width: 100%;
+                    }
+            
+                    audio {
+                        display: block;
+                        margin: 20px auto;
+                    }
+            
+                    .icons {
+                        text-align: center;
+                        font-size: 36px;
+                        margin: 20px;
+                        
+                    }
+                    .icons i {
+                        margin: 0 10px;
+                        color: #007BFF;
+                        transition: color 0.3s;
+                    }
+                    .icons i:hover {
+                        color: #0056b3;
+                    }
+                </style>
+            </head>
+            <body>
+                <div id="content">
+                    <h1>HTML Elements with CSS Styling</h1>
+                    
+                    <!-- Background Color -->
+                    <h2>Background Color</h2>
+                    <p>This is a content section with a white background.</p>
+            
+                    <!-- Iframe -->
+                    <h2>Iframe</h2>
+                    <iframe src="https://www.example.com/"></iframe>
+            
+                    <!-- Image Source -->
+                    <h2>Image / GIF</h2>
+                    <img src="assets\images\06_08_gif.gif" alt="Sample Image">
+            
+                    <!-- Video Source -->
+                    <h2>Video</h2>
+                    <video controls>
+                        <source src="assets\vimeoplayer\tom and jerry funny whatsapp status video.mp4" type="video/mp4">
+                    </video>
+            
+                    <!-- Audio Source -->
+                    <h2>Audio</h2>
+                    <audio controls>
+                        <source src="assets\vimeoplayer\JAWAN Chaleya (Hindi) Shah Rukh Khan Nayanthara Atlee Anirudh Arijit S Shilpa R Kumaar [TubeRipper.com].m4a" type="audio/mpeg">
+                    </audio>
+
+                    <!-- Youtube i frames -->
+                    <h2>Youtube iFrames</h2>
+                    <iframe width="1275" height="717" src="https://www.youtube.com/embed/x2ywpBRM23Y" title="Iron Man Suit Up Scene (Hindi) - Avengers Infinity War Movie Clip HD" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            
+                    <!-- Icons with CSS Styling -->
+                    <h2>Icons</h2>
+                    <div class="icons">
+                        <img src="assets\socicon\html-5.png" alt="Icon Image"class="icons i" width="50" height="50"><strong> HTML </strong>
+                        <img src="assets\socicon\java-script.png" alt="Icon Image"class="icons i"width="50" height="50"><strong> JAVA SCRIPT </strong>
+                        <img src="assets\socicon\programming.png" alt="Icon Image"class="icons i"width="50" height="50"><strong> WEB SCHOOL </strong>
+                        <img src="assets\socicon\xml.png" alt="Icon Image"class="icons i"width="50" height="50"><strong> XML </strong>
+                        <img src="assets\socicon\certificate.png" alt="Icon Image"class="icons i"width="50" height="50"><strong> CERTIFICATE </strong>
+
+                        
+                    </div>
+                </div>
+            </body>
+            </html>
+            
+</textarea>
+        <br>
+        <button id="execute-button" >Execute Code</button>
+    </div>
+    <div id="inner-box">
+        <h2>Output:</h2>
+        <iframe id="output-frame" width="100%" height="1000" ></iframe>
+    </div>
+
+    <script>
+    
+        var urlParams = new URLSearchParams(window.location.search);
+        var code = urlParams.get('code');
+        
+        if (code) {
+            document.getElementById('code-output').value = decodeURIComponent(code);
+        }
+  
+        document.getElementById('execute-button').addEventListener('click', function() {
+            var code = document.getElementById('code-input').value;
+            var outputFrame = document.getElementById('output-frame');
+            var frameDocument = outputFrame.contentDocument || outputFrame.contentWindow.document;
+            frameDocument.open();
+            frameDocument.write(code);
+            frameDocument.close();
+        });
+    </script>
+</body>
+</html>

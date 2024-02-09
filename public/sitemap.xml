@@ -1,0 +1,62 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
+<url>
+<loc>https://webschooll.netlify.app/</loc>
+<lastmod>2024-02-09T16:38:36+00:00</lastmod>
+<priority>1.00</priority>
+</url>
+<url>
+<loc>https://webschooll.netlify.app/page1</loc>
+<lastmod>2024-02-09T16:38:36+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://webschooll.netlify.app/page2</loc>
+<lastmod>2024-02-09T16:38:36+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://webschooll.netlify.app/page3</loc>
+<lastmod>2024-02-09T16:38:36+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://webschooll.netlify.app/page5</loc>
+<lastmod>2024-02-09T16:38:36+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://webschooll.netlify.app/page4</loc>
+<discription> About webschool </discription>
+<lastmod>2024-02-09T16:38:36+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://developer.mozilla.org/en-US/docs/Learn</loc>
+<discription> Development documents </discription>
+<lastmod>2024-02-09T16:38:36+00:00</lastmod>
+<priority>0.80</priority>
+
+<url>
+<loc>https://snipcart.com/blog/integrating-apis-introduction</loc>
+<discription> API integrating-apis-introduction </discription>
+<lastmod>2024-02-09T16:38:36+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+
+<url>
+<loc>https://www.hostinger.com/tutorials/website/how-to-upload-your-website</loc>
+<discription> web how-to-upload-your-website, web hosting  tutorials </discription>
+<lastmod>2024-02-09T16:38:36+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+
+<url>
+<loc>https://www.elegantthemes.com/blog/tips-tricks/how-to-connect-to-your-website-via-ssh-and-why-youd-want-to#:~:text=Connect%20to%20WordPress%20Using%20SSH%201%20Download%20and,Your%20Server%20Using%20the%20Command%20Line%20See%20More.</loc>
+<discription> serverconnection ,  how-to-connect-to-your-website-via-ssh-and-why-youd-want-to</discription>
+<lastmod>2024-02-09T16:38:36+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+
+
+</urlset>
