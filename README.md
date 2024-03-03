@@ -2,6 +2,10 @@
 
 This is a website made using HTML, CSS, JS, PHP, and Bootstrap. The website is designed to be similar to W3Schools.
 
+## website 
+
+https://webschooll.netlify.app/
+
 ## Requirements
 
 - HTML
