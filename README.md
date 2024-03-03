@@ -1,6 +1,7 @@
 # Webschool
 
-This is a website made using HTML, CSS, JS, PHP, and Bootstrap. The website is designed to be similar to W3Schools.
+Hey there! Have you checked out Webschool yet? It's a great webschool for learning web development with simple examples and a code runner 🚀 It's perfect for beginners and pros alike! #webdevelopment #learntocode
+
 
 ## website 
 
