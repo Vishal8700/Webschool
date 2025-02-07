@@ -1,45 +1,130 @@
 <!DOCTYPE html>
 <html>
-<head>
 
+<head>
     <style>
         #bg {
-            background-color:#e6e9ea;
-
+            background-color: #e6e9ea;
+            font-family: Arial, sans-serif;
         }
+
         #outer-box {
             border: 1px solid #ccc;
             padding: 20px;
             background-color: #e4f0e8;
             border-radius: 2%;
+            margin-bottom: 20px;
         }
+
         #inner-box {
             border: 1px solid #ccc;
-            margin-top: 10px;
             padding: 10px;
-            background-color:#ffffff;
+            background-color: #ffffff;
             border-radius: 2%;
             font-size: 24px;
         }
+
         button {
             background-color: #4CAF50;
             color: #fff;
             border: none;
             padding: 10px 20px;
             cursor: pointer;
+            border-radius: 5px;
         }
+
         button:hover {
             background-color: #45a049;
-        }   
+        }
+
+        /* Styles for the code input area */
+        #code-input {
+            width: 100%;
+            /* Make the textarea take the full width of its parent */
+            height: 400px;
+            /* Adjust as needed */
+            border: 1px solid rgb(1, 38, 58);
+            padding: 10px;
+            box-sizing: border-box;
+            /* Ensures padding is included in the element's total width and height */
+            resize: vertical;
+            /* Allows vertical resizing */
+            font-family: monospace;
+            /* Use a monospace font for code */
+            font-size: 14px;
+        }
+
+        /* Flex container for the layout */
+        .container {
+            display: flex;
+            gap: 20px;
+            /* Space between the code input and output */
+        }
+
+        /* Style for the output iframe */
+        #output-frame {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ccc;
+            border-radius: 2%;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                /* Stack the code input and output vertically on smaller screens */
+            }
+
+            #code-input,
+            #output-frame {
+                width: 100%;
+                /* Make them full width on smaller screens */
+            }
+        }
+
+        /* Basic form styling (as in your provided code) */
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
     </style>
 </head>
-<body id ="bg">
-  
+
+<body id="bg">
+
     <div id="outer-box">
         <h2>Write your HTML code below:</h2>
-        <textarea id="code-input" rows="50" cols="250" style="border-color: rgb(1, 38, 58) ;">
-            <!DOCTYPE html>
+        <button id="execute-button">Execute Code</button>
+        <div class="container">
+            <div style="width: 50%;">
+                <textarea id="code-input" rows="50" cols="80">
+<!DOCTYPE html>
 <html>
+
 <head>
     <style>
         body {
@@ -85,6 +170,7 @@
         }
     </style>
 </head>
+
 <body>
     <h1>Sample Form</h1>
     <form action="#" method="post">
@@ -115,30 +201,22 @@
         <label for="radio2">Option 2:opt to paid subscription</label>
         <input type="radio" id="radio2" name="radio" value="option2"><br>
         <br>
-        <button type="submit" style="border-radius: 5% ;">Submit</button>
+        <button type="submit" style="border-radius: 5%;">Submit</button>
     </form>
 </body>
-</html>
 
-</textarea>
-        <br>
-        <button id="execute-button">Execute Code</button>
-    </div>
-    <div id="inner-box">
-        <h2>Output:</h2>
-        <iframe id="output-frame" width="100%" height="800" ></iframe>
+</html>
+                </textarea>
+            </div>
+            <div style="width: 50%;">
+                <h2>Output:</h2>
+                <iframe id="output-frame"></iframe>
+            </div>
+        </div>
     </div>
 
     <script>
-    
-        var urlParams = new URLSearchParams(window.location.search);
-        var code = urlParams.get('code');
-        
-        if (code) {
-            document.getElementById('code-output').value = decodeURIComponent(code);
-        }
-  
-        document.getElementById('execute-button').addEventListener('click', function() {
+        document.getElementById('execute-button').addEventListener('click', function () {
             var code = document.getElementById('code-input').value;
             var outputFrame = document.getElementById('output-frame');
             var frameDocument = outputFrame.contentDocument || outputFrame.contentWindow.document;
@@ -148,4 +226,5 @@
         });
     </script>
 </body>
+
 </html>

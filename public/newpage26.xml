@@ -1,23 +1,25 @@
-
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
     <title>Sample RSS Feed</title>
     <description>This is a sample RSS feed.</description>
     <link>https://google.com</link>
+    <copyright>Copyright 2023, All Rights Reserved.</copyright>
 
     <item>
       <title>Item 1</title>
       <description>This is item 1 description.</description>
       <link>https://youtube.com/item/1</link>
+      <guid>https://youtube.com/item/1</guid>
+      <pubDate>Thu, 08 Feb 2025 12:00:00 GMT</pubDate>
     </item>
 
     <item>
       <title>Item 2</title>
       <description>This is item 2 description.</description>
       <link>https://nsut.com/item/2</link>
+      <guid>https://nsut.com/item/2</guid>
+      <pubDate>Fri, 09 Feb 2025 12:00:00 GMT</pubDate>
     </item>
-    <copyright>copyright 2023 all right reserve </copyright>
   </channel>
 </rss>
-

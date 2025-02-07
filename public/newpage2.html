@@ -1,131 +1,171 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <style>
-        #bg {
-            background-color:#e6e9ea;
-
-        }
-        #outer-box {
-            border: 1px solid #ccc;
+        body {
+            margin: 0;
             padding: 20px;
+            background-color: #e6e9ea;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            display: flex;
+            gap: 20px;
+            height: calc(100vh - 40px);
+        }
+        
+        .editor-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
             background-color: #e4f0e8;
-            border-radius: 2%;
-        }
-        #inner-box {
+            padding: 20px;
+            border-radius: 8px;
             border: 1px solid #ccc;
-            margin-top: 10px;
-            padding: 10px;
-            background-color:#ffffff;
-            border-radius: 2%;
-            font-size: 24px;
         }
+        
+        .output-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            margin: 0;
+        }
+        
+        #code-input {
+            flex-grow: 1;
+            border: 1px solid rgb(1, 38, 58);
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            resize: none;
+        }
+        
+        #output-frame {
+            flex-grow: 1;
+            border: none;
+            background-color: white;
+            border-radius: 4px;
+        }
+        
         button {
             background-color: #4CAF50;
-            color: #fff;
+            color: white;
             border: none;
             padding: 10px 20px;
             cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
         }
+        
         button:hover {
             background-color: #45a049;
-        } 
+        }
     </style>
 </head>
-<body id ="bg">
-  
-    <div id="outer-box">
-        <h2>Write your HTML code below:</h2>
-        <textarea id="code-input" rows="50" cols="250" style="border-color: rgb(1, 38, 58) ;">
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <style>
-                    body {
-                        font-family: Arial, sans-serif;
-                    }
-            
-                    /* Ordered List (OL) */
-                    ol {
-                        color: #007BFF;
-                        font-weight: bold;
-                    }
-                    ol li {
-                        margin: 10px;
-                    }
-            
-                    /* Unordered List (UL) */
-                    ul {
-                        color: #ff6600;
-                        list-style-type: disc;
-                    }
-                    ul li {
-                        margin: 10px;
-                    }
-            
-                    /* Description List (DL) */
-                    dl {
-                        color: #00a300;
-                    }
-                    dt {
-                        font-weight: bold;
-                    }
-                    dd {
-                        margin: 10px 0;
-                    }
-                </style>
-            </head>
-            <body>
-                <h1>List Examples</h1>
-            
-                <!-- Ordered List (OL) -->
-                <h2>Ordered List (OL)</h2>
-                <ol>
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                </ol>
-            
-                <!-- Unordered List (UL) -->
-                <h2>Unordered List (UL)</h2>
-                <ul>
-                    <li>Item A</li>
-                    <li>Item B</li>
-                    <li>Item C</li>
-                </ul>
-            
-                <!-- Description List (DL) -->
-                <h2>Description List (DL)</h2>
-                <dl>
-                    <dt>Term 1</dt>
-                    <dd>Description 1</dd>
-                    <dt>Term 2</dt>
-                    <dd>Description 2</dd>
-                    <dt>Term 3</dt>
-                    <dd>Description 3</dd>
-                </dl>
-            </body>
-            </html>
-            
-</textarea>
-        <br>
-        <button id="execute-button">Execute Code</button>
-    </div>
-    <div id="inner-box">
-        <h2>Output:</h2>
-        <iframe id="output-frame" width="100%" height="800" ></iframe>
+<body>
+    <div class="container">
+        <div class="editor-section">
+            <div class="header">
+                <h2>Code Editor</h2>
+                <button id="execute-button">Run Code</button>
+            </div>
+            <textarea id="code-input" spellcheck="false">
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Ordered List (OL) */
+        ol {
+            color: #007BFF;
+            font-weight: bold;
+        }
+        ol li {
+            margin: 10px;
+        }
+
+        /* Unordered List (UL) */
+        ul {
+            color: #ff6600;
+            list-style-type: disc;
+        }
+        ul li {
+            margin: 10px;
+        }
+
+        /* Description List (DL) */
+        dl {
+            color: #00a300;
+        }
+        dt {
+            font-weight: bold;
+        }
+        dd {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>List Examples</h1>
+
+    <!-- Ordered List (OL) -->
+    <h2>Ordered List (OL)</h2>
+    <ol>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ol>
+
+    <!-- Unordered List (UL) -->
+    <h2>Unordered List (UL)</h2>
+    <ul>
+        <li>Item A</li>
+        <li>Item B</li>
+        <li>Item C</li>
+    </ul>
+
+    <!-- Description List (DL) -->
+    <h2>Description List (DL)</h2>
+    <dl>
+        <dt>Term 1</dt>
+        <dd>Description 1</dd>
+        <dt>Term 2</dt>
+        <dd>Description 2</dd>
+        <dt>Term 3</dt>
+        <dd>Description 3</dd>
+    </dl>
+</body>
+</html>
+            </textarea>
+        </div>
+        
+        <div class="output-section">
+            <div class="header">
+                <h2>Output</h2>
+            </div>
+            <iframe id="output-frame"></iframe>
+        </div>
     </div>
 
     <script>
-    
-        var urlParams = new URLSearchParams(window.location.search);
-        var code = urlParams.get('code');
-        
-        if (code) {
-            document.getElementById('code-output').value = decodeURIComponent(code);
-        }
-  
         document.getElementById('execute-button').addEventListener('click', function() {
             var code = document.getElementById('code-input').value;
             var outputFrame = document.getElementById('output-frame');

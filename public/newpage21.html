@@ -1,43 +1,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>XML Validation</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f3f3f3;
             margin: 0;
-            padding: 0;
+            padding: 20px;
+            background-color: #e6e9ea;
+            font-family: Arial, sans-serif;
         }
-
-        h1 {
-            color: #333;
+        
+        .container {
+            display: flex;
+            gap: 20px;
+            height: calc(100vh - 40px);
         }
-
-        #xmlInput {
-            width: 80%;
-            height: 200px;
-            padding: 10px;
+        
+        .editor-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #e4f0e8;
+            padding: 20px;
+            border-radius: 8px;
             border: 1px solid #ccc;
         }
-
+        
+        .output-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            margin: 0;
+        }
+        
+        #code-input {
+            flex-grow: 1;
+            border: 1px solid rgb(1, 38, 58);
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            resize: none;
+        }
+        
+        #output-frame {
+            flex-grow: 1;
+            border: none;
+            background-color: white;
+            border-radius: 4px;
+        }
+        
         button {
             background-color: #4CAF50;
-            color: #fff;
+            color: white;
             border: none;
             padding: 10px 20px;
             cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
         }
-
+        
         button:hover {
             background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <h1>XML Validation</h1>
-    <textarea id="xmlInput" placeholder="Enter your XML">
+    <div class="container">
+        <div class="editor-section">
+            <div class="header">
+                <h2>Code Editor</h2>
+                <button id="execute-button">Run Code</button>
+            </div>
+            <textarea id="code-input" spellcheck="false">
         <?xml version="1.0" encoding="UTF-8"?>
         <note>
         <to>Tove</to>
@@ -45,28 +92,27 @@
         <heading>Reminder</pheading>
         <body>Don't forget me this weekend!</body>
         </note>
+    
     </textarea>
-    <br>
-    <button onclick="validateXML()">Validate XML</button>
+</div>
 
-    <script>
-        function validateXML() {
-            var xmlString = document.getElementById("xmlInput").value;
+<div class="output-section">
+    <div class="header">
+        <h2>Output</h2>
+    </div>
+    <iframe id="output-frame"></iframe>
+</div>
+</div>
 
-            try {
-                var parser = new DOMParser();
-                var xmlDoc = parser.parseFromString(xmlString, "application/xml");
-
-                if (xmlDoc.getElementsByTagName("parsererror").length > 0) {
-                    var errorMsg = xmlDoc.getElementsByTagName("parsererror")[0].textContent;
-                    alert("XML is not valid:\n" + errorMsg);
-                } else {
-                    alert("XML is valid.");
-                }
-            } catch (error) {
-                alert("Error parsing XML: " + error.message);
-            }
-        }
-    </script>
+<script>
+document.getElementById('execute-button').addEventListener('click', function() {
+    var code = document.getElementById('code-input').value;
+    var outputFrame = document.getElementById('output-frame');
+    var frameDocument = outputFrame.contentDocument || outputFrame.contentWindow.document;
+    frameDocument.open();
+    frameDocument.write(code);
+    frameDocument.close();
+});
+</script>
 </body>
 </html>
